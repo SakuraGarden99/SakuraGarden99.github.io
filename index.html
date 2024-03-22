@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="manifest.json" />
     <link rel="icon" href="kizaru.png" />
-
+    
     <title>First Ever deployed App</title>
 </head>
 <body>
     <h1>Test PWA</h1>
     <h2>This is a test site for deploying pwa</h2>
+
+
     <!-- Register the app's service worker. -->
+<script src="app.js"></script>
 <script>
     if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("sw.js").then(
