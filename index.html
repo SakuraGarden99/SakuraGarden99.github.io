@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="kizaru.png" />
+
+    <title>port 9876</title>
+</head>
+<body>
+    <h1>Test PWA</h1>
+
+    <!-- Register the app's service worker. -->
+<script>
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("sw.js").then(
+            (registration) => {
+            console.log("Service worker registration successful:", registration);
+            },
+            (error) => {
+            console.error(`Service worker registration failed: ${error}`);
+            },
+        );
+    } else {
+        console.error("Service workers are not supported.");
+    }
+
+</script>
+
+</body>
+</html>
