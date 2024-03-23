@@ -8,52 +8,216 @@
     <link rel="stylesheet" href="style.css">
     
     <title>First Ever deployed App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            width: auto;
+            background-color: white;
+            height: auto;
+
+        }
+
+        .search-container {
+            margin-left: 10px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            border-radius: 30px;
+            margin-top: 10px;
+            width: 300px;
+            text-align: left;
+            padding: 20px;
+            /* Added padding for better spacing */
+        }
+
+        .search-container input[type="search"],
+        .search-container input[type="text"],
+        .search-container input[type='number'],
+        .search-container input[type='select'] {
+            padding: 10px;
+            /* Adjusted padding for better consistency */
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            width: calc(100% - 40px);
+            /* Adjusted width to accommodate padding */
+            margin-bottom: 10px;
+            /* Added margin bottom for better spacing */
+            text-align: center;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            height: 5px;
+        }
+
+        .search-container button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            /* Adjusted width to fit container */
+            transition: background-color 0.3s;
+        }
+
+
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .field {
+            margin-bottom: 10px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .field input[type="text"],
+        .field input[type="number"] {
+            width: 150px;
+            /* Adjust width as needed */
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            box-sizing: border-box;
+            height: 30px;
+        }
+    </style>
 </head>
 <body>
-    <!-- HTML for the custom installation prompt -->
-    <div id="custom-install-prompt" style="display: none;">
-        <p>This website can be installed as an app.</p>
-        <button id="install-button">Install</button>
-    </div>
-    
-    <header>
-        <h1>Long HTML Content Example</h1>
-        <p>This is a demonstration of long HTML content with CSS styling.</p>
-    </header>
+    <form onsubmit="submitForm(event)">
+        <div class="search-container">
+            <input type="search" id="search" name="search" placeholder="Search...">
+            <button type="submit">Search</button>
+            <!-- Moved Sub-Category input field inside the search container -->
 
-    <div class="container">
-        <div class="main-content">
-            <div class="section">
-                <h2>Section 1</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac libero sit amet libero aliquet
-                    lacinia et vel nunc. Integer id nunc nec felis pharetra varius sit amet et sem.</p>
-                <p>Curabitur nec tortor mauris. Nullam nec neque nec purus posuere condimentum. In vel nisi in mi
-                    varius efficitur at in dui. Nullam ac libero lacus. Duis suscipit velit ac est vestibulum
-                    facilisis.</p>
-            </div>
-    
-            <div class="section">
-                <h2>Section 2</h2>
-                <p>Phasellus ultricies leo sit amet sem volutpat vehicula. Donec pretium velit nec metus cursus
-                    lacinia. Nulla non ex in eros consequat dictum. Nullam vel risus vitae lectus rhoncus
-                    ullamcorper.</p>
-                <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed
-                    commodo, nisl id dictum tempor, risus purus efficitur mauris, nec interdum odio sapien ac
-                    nisi.</p>
-            </div>
-    
-            <!-- More sections can be added here -->
-    
         </div>
-    </div>
-    
-    <footer>
-        <p>&copy; 2024 Long HTML Content Example. All rights reserved.</p>
-    </footer>
+    </form>
+    <form>
+        <div class="search-container">
+            <!-- <label for="search">Search:</label>
+                <input type="search" id="search" name="search" placeholder="Search...">
+                <br><br>
+
+                <button type="submit">Search</button>
+                <br><br> -->
+
+            <label for="itemName">ASIN Number:</label>
+            <input type="text" id="custom_asin" name="custom_asin" placeholder="ASIN Number"></label>
+            <br>
+            <label for="asinSelect">ASIN Number:</label>
+            <select id="asinSelect" name="productType" >
+                <option></option>
+                <option value="ASIN">ASIN</option>
+                <option value="Non-ASIN">Non-ASIN</option>
+
+            </select>
+            <!-- <div class="container">
+                    <label>Scan</label>
+                    <div class="section">
+                        <div id="my-qr-reader">
+                        </div>
+                    </div>
+                </div> -->
 
 
+            <div id="boxNumberField" style="display: none;">
+                <label for="asinReason">Box Number:</label>
+                <input type="text" id="custom_box_number" name="custom_box_number">
+            </div>
+
+
+
+            <div id="imageUploadField" style="display: none;">
+                <label for="imageUpload">Image:</label>
+                <img id="image" src="" alt="API Image">
+            </div>
+
+
+            <br>
+            <label> ItemName :</label>
+            <input type="text" id="item_name" name="itemName" placeholder="ItemName">
+            <label>Description :</label>
+            <input type="text" id="description" name="description" placeholder="Description">
+
+            <label>Brand :</label>
+            <input type="text" id="brand" name="brand" placeholder="Brand">
+
+
+
+            <label>Sub-Category</label>
+            <input type="text" id="subcategory" name="subcategory">
+
+
+            <div class="container">
+                <div class="field">
+                    <label>EAN</label>
+                    <input type="number" id="ean" name="ean">
+                </div>
+                <div class="field">
+                    <label>MRP:</label>
+                    <input type="number" id="rate" name="rate">
+                </div>
+            </div>
+
+
+
+
+
+            <div class="container">
+                <div class="field">
+                    <label for="field1">Purchased Qty:</label>
+                    <input type="number" id="qty" name="accepted_qty">
+                </div>
+                <div class="field">
+                    <label for="field2">Received Qty :</label>
+                    <input type="number" id="received_qty" name="received_qty">
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+            <label for="qc">QC Pass:</label>
+            <select id="qc" name="qc" required onchange="toggleAdditionalField()">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <br>
+            <br>
+
+            <div id="additionalField" style="display: none;">
+                <label for="additionalInfo">Resion:</label>
+                <input type="text" id="additionalInfo" name="additionalInfo">
+                <br>
+            </div>
+            <br>
+
+        </div>
+        <div class="search-container">
+            <button type="button" onclick="previous()">Previous</button>
+            <button type="button" onclick="next()">Next</button>
+            <button type="button" onclick="saveData()">Save Data</button>
+        </div>
+    </form>
+</body>
     <!-- Register the app's service worker. -->
 <script src="app.js"></script>
+<script src="logic.js"></script>
 <script>
     if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("sw.js").then(
@@ -70,5 +234,5 @@
 
 </script>
 
-</body>
+
 </html>
