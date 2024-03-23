@@ -1,4 +1,6 @@
 let deferredPrompt; // Declare deferredPrompt variable globally
+const customInstallPrompt = document.getElementById('custom-install-prompt');
+const installButton = document.getElementById('install-button');
 
 window.addEventListener('beforeinstallprompt', (event) => {
   // Prevent the mini-infobar from appearing on mobile
@@ -6,12 +8,15 @@ window.addEventListener('beforeinstallprompt', (event) => {
   // Stash the event so it can be triggered later.
   deferredPrompt = event;
 
-  // Trigger the installation prompt when the user clicks anywhere on the page
-  document.addEventListener('click', installApp);
+  // Show the custom install prompt
+  customInstallPrompt.style.display = 'block';
 });
 
-function installApp() {
-  // Ensure that the deferredPrompt is available and prompt the user
+installButton.addEventListener('click', () => {
+  // Hide the custom install prompt
+  customInstallPrompt.style.display = 'none';
+
+  // Prompt the user to install the app
   if (deferredPrompt) {
     // Show the install prompt
     deferredPrompt.prompt();
@@ -27,6 +32,4 @@ function installApp() {
       deferredPrompt = null;
     });
   }
-  // Remove the event listener after triggering the prompt
-  document.removeEventListener('click', installApp);
-}
+});
