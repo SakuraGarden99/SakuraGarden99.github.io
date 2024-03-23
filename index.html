@@ -6,7 +6,7 @@
     <link rel="manifest" href="manifest.json" />
     <link rel="icon" href="kizaru.png" />
     <link rel="stylesheet" href="style.css">
-    
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
     <title>First Ever deployed App</title>
     <style>
         body {
@@ -212,6 +212,7 @@
             <button type="button" onclick="previous()">Previous</button>
             <button type="button" onclick="next()">Next</button>
             <button type="button" onclick="saveData()">Save Data</button>
+            <button type="button" onclick="printBarcode()">Print barcode</button>
         </div>
     </form>
 </body>

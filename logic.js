@@ -140,3 +140,19 @@ function updateCurrentItem() {
         currentItem.subcategory = document.getElementById('subcategory').value;
     }
 }
+
+function printBarcode(){
+    var item_code = document.getElementById("item_name").value;
+    console.log(item_code)
+    var barcodeWindow = window.open('');
+    barcodeWindow.document.write('<svg id="barcode"></svg>');
+    
+    JsBarcode(barcodeWindow.document.getElementById("barcode"), item_code, {
+            height: 50,
+            text: "rate",
+            displayValue: true // Whether to display the human-readable value below the barcode
+        });
+    
+    barcodeWindow.print();
+    barcodeWindow.close();
+}
